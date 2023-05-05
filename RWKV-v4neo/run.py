@@ -58,7 +58,7 @@ vocab_size = 50277
 # n_embd = 2560
 # ctx_len = 1024
 
-MODEL_NAME = '/fsx/BlinkDL/HF-MODEL/rwkv-4-pile-7b/RWKV-4-Pile-7B-20221115-8047'
+MODEL_NAME = '/RWKV-v4neo/models/rwkv-raven-detailed-rolls'
 n_layer = 32
 n_embd = 4096
 ctx_len = 1024
@@ -72,6 +72,9 @@ args.head_qk = 0
 args.pre_ffn = 0
 args.grad_cp = 0
 args.my_pos_emb = 0
+args.MODEL_LORA = './out/rwkv-5'
+args.lora_r = 8
+args.lora_alpha = 16
 os.environ["RWKV_RUN_DEVICE"] = args.RUN_DEVICE
 
 ########################################################################################################
@@ -81,7 +84,7 @@ os.environ["RWKV_RUN_DEVICE"] = args.RUN_DEVICE
 # context = 'A'
 # context = "\nIn the"
 # context = '\nSugar:'
-context = "\nIn a shocking finding, scientist discovered a herd of dragons living in a remote, previously unexplored valley, in Tibet. Even more surprising to the researchers was the fact that the dragons spoke perfect Chinese."
+context = "\context: Noelle has been battling the dragon for 3 hours. Noelle had evacuated a nearby town to battle the dragon. The dragon had been stealing children and treasures from the town of Elsidor. \nBob: Narrate the outcome of the following sentence. Focus on environment around Noelle and stay in the moment. \n\nsentence: Noelle vanquishes the dragon with room for improvement.\nAlice: "
 
 # context = "\n深圳是" # test Chinese
 # context = "\n東京は" # test Japanese
@@ -118,7 +121,7 @@ context = "\nIn a shocking finding, scientist discovered a herd of dragons livin
 
 # User:''' # type your question here
 
-NUM_TRIALS = 999
+NUM_TRIALS = 1
 LENGTH_PER_TRIAL = 333
 
 TEMPERATURE = 1.0
